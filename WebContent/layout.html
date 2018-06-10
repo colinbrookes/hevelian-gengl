@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+	<meta http-equiv="x-ua-compatible" content="IE=edge"></meta>
+	<title>GenGL</title>
+
+	<script src='clapi/scripts/core/Utils.js'></script>
+	<script src='clapi/scripts/core/Array.js'></script>
+	<script src='clapi/scripts/core/Dictionary.js'></script>
+	<script src='clapi/scripts/include.js'></script>
+
+	<script>
+	
+	// initialise the main layout page
+	var _page_01 = null;
+	function loadDashboard()
+	{
+		if(_debug=="true") _addTimeline('onload', new Date(), null, 'page onLoad function');
+		
+		_page_01 = new Dashboard();
+		_page_01.DrawToFromURL("api/application/" + GetURLParameter('application') + "/layout?layout=" + GetURLParameter('layout'), document.getElementById('content'));
+		
+		if(_debug=="true") _updateTimeline('onload', new Date());
+	}
+	
+	</script>
+</head>
+<body id="content" onload="loadDashboard();">
+</body>
+<script>
+if(_debug=="true") _updateTimeline('page', new Date());
+</script>
+</html>
