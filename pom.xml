@@ -29,40 +29,8 @@
 				<version>2.2</version>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<webXml>WebContent/WEB-INF/web.xml</webXml>
-					<source>1.7</source>
-					<target>1.7</target>
-					<webResources>
-
-						<!-- add a couple of folders we need -->
-						<resource>
-							<directory>WebContent/clapi</directory>
-							<targetPath>clapi</targetPath>
-						</resource>
-
-						<!-- and now a couple of extra files -->
-						<resource>
-							<directory>WebContent</directory>
-							<include>*.html</include>
-						</resource>
-						<resource>
-							<directory>WebContent/WEB-INF</directory>
-							<include>glassfish-web.xml</include>
-							<targetPath>WEB-INF</targetPath>
-						</resource>
-						<resource>
-							<directory>WebContent/WEB-INF</directory>
-							<include>gengl-*.xml</include>
-							<targetPath>WEB-INF</targetPath>
-						</resource>
-
-						<!-- add our own mime types -->
-						<resource>
-							<directory>WebContent/META-INF</directory>
-							<include>mime.types</include>
-							<targetPath>META-INF</targetPath>
-						</resource>
-					</webResources>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
