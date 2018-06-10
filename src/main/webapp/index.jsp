@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" session="false"
+<%@ page contentType="text/html; charset=UTF-8" session="false"
     pageEncoding="UTF-8" import="com.hevelian.gengl.core.*, javax.servlet.http.*, java.io.*" %><%
     
 //    HttpSession r_session = request.getSession(true);
@@ -10,8 +10,8 @@
 %><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 	<head>
 		<title>eXonite Administrator</title>
-		<link type="text/css" rel="stylesheet" href="clapi/css/clapi.css">
-		<link type="text/css" rel="stylesheet" href="clapi/css/admin.css">
+		<link type="text/css" rel="stylesheet" href="clapi/css/clapi.css"></link>
+		<link type="text/css" rel="stylesheet" href="clapi/css/admin.css"></link>
 		<script language="javascript" src="clapi/scripts/core/ajax.js"></script>
 		<script language="javascript" src="clapi/scripts/core/Utils.js"></script>
 		<script language="javascript" src="clapi/scripts/core/Array.js"></script>
