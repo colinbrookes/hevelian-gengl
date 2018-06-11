@@ -158,6 +158,8 @@ function _getObjectByExactName(_name)
  */
 function _findHTMLObject(_in, _ida)
 {
+	if(_in==null || _in.childNodes==null) return null;
+	
 	for(var i=0; i<_in.childNodes.length; i++)
 	{
 		try {

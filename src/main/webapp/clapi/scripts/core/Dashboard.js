@@ -1151,7 +1151,10 @@ function Dashboard()
 						var _c_colour	= _colNode.getAttribute('colour');
 						var _c_sortAs	= _colNode.getAttribute('sortAs');
 						var _c_format	= _colNode.getAttribute('format');
-						_object.AddColumnDefinition(_c_name, _c_treatAs, _c_align, _c_width, _c_colour, _c_sortAs, _c_format);
+						var _c_cols = _c_name.split(",");
+						for( var cc=0; cc<_c_cols.length; cc++) {
+							_object.AddColumnDefinition(_c_cols[cc], _c_treatAs, _c_align, _c_width, _c_colour, _c_sortAs, _c_format);
+						}
 						break;
 						
 					case 'align':

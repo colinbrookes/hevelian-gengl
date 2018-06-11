@@ -65,12 +65,11 @@ if(_snooper.IsiPhoneOS)
 }
 
 // stylesheets
-document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/dhtmlx.css" charset="utf-8">');
-document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/message_default.css" charset="utf-8">');
+document.write('<link type="text/css" rel="stylesheet" href="clapi/dhtmlx/dhtmlx.css" charset="utf-8">');
+//document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/dhtmlx.css" charset="utf-8">');
+//document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/message_default.css" charset="utf-8">');
 document.write('<link type="text/css" rel="stylesheet" href="clapi/css/960.css" charset="utf-8">');
 document.write('<link type="text/css" rel="stylesheet" href="clapi/css/clapi.css" charset="utf-8">');
-
-document.write('<link type="text/css" rel="stylesheet" href="clapi/scripts/lib/x3dom/x3dom.css" charset="utf-8">');
 
 if(_style!="")
 {
@@ -83,7 +82,7 @@ if(_cid!="")
 	document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/custom/'+_cid+'/dhtmlx_custom.css" charset="utf-8">');
 } else
 {
-	var _defaultImgsPath = 'clapi/ui/imgs/';
+	var _defaultImgsPath = 'clapi/dhtmlx/imgs/';
 }
 
 if(_script!="")
@@ -91,15 +90,14 @@ if(_script!="")
 	document.write('<script language="javascript" src="clapi/ui/custom/'+_script+'/custom.js" charset="utf-8"></script>');
 }
 
-// x3dom script
-document.write('<script language="javascript" src="clapi/scripts/lib/x3dom/x3dom.js" charset="utf-8"></script>');
 
 // math js library
 document.write('<script language="javascript" src="clapi/scripts/lib/math.min.js" charset="utf-8"></script>');
 
 // default DHTMLX scripts
-document.write('<script language="javascript" src="clapi/ui/dhtmlx.js" charset="utf-8"></script>');
-document.write('<script language="javascript" src="clapi/ui/message.js" charset="utf-8"></script>');
+document.write('<script language="javascript" src="clapi/dhtmlx/dhtmlx.js" charset="utf-8"></script>');
+//document.write('<script language="javascript" src="clapi/ui/dhtmlx.js" charset="utf-8"></script>');
+//document.write('<script language="javascript" src="clapi/ui/message.js" charset="utf-8"></script>');
 
 // essential libs
 document.write('<script language="javascript" src="clapi/scripts/lib/encoder.js" charset="utf-8"></script>');
@@ -141,11 +139,7 @@ document.write('<script language="javascript" src="clapi/scripts/connectors/core
 
 document.write('<script language="javascript" src="clapi/scripts/connectors/socialmedia/media_rss.js" charset="utf-8"></script>');
 
-document.write('<script language="javascript" src="clapi/scripts/connectors/information_builders/iway_jdbc.js" charset="utf-8"></script>');
-document.write('<script language="javascript" src="clapi/scripts/connectors/information_builders/iway_service.js" charset="utf-8"></script>');
 document.write('<script language="javascript" src="clapi/scripts/connectors/information_builders/webfocus.js" charset="utf-8"></script>');
-
-document.write('<script language="javascript" src="clapi/scripts/lib/d3/d3.min.js" charset="utf-8"></script>');
 
 // default HIGHCHARTS scripts
 if(_without.indexOf('highcharts')==-1)

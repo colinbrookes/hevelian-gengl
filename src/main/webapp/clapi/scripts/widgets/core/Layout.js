@@ -430,7 +430,7 @@ function Layout(__node, __target, __prefix) {
 			_page = new dhtmlXLayoutObject(_target, _pattern);
 		}
 
-		_page.setImagePath('clapi/ui/imgs/');
+//		_page.setImagePath('clapi/dhtmlx/imgs/');
 		_page.attachEvent("onContentLoaded", LateLoading);
 		_page.attachEvent("onResizeFinish", _me.FireResizeFinish);
 		_page.attachEvent("onPanelResizeFinish", _me.FireResizeFinish);

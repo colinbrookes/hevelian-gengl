@@ -282,9 +282,7 @@ function ItemGrid(__id, __target, __xml)
 		} catch(e) { console.log("Grid failed to draw: " + _dhtmlxGrid); return;}
 		
 		_dhtmlxGrid = (_target.attachGrid!=null && _target.attachGrid!='undefined')? _target.attachGrid() : new dhtmlXGridObject(_id);
-		_dhtmlxGrid.setImagePath(_defaultImgsPath);
-		_dhtmlxGrid.setSkin("dhx_skyblue");
-		
+		_dhtmlxGrid.setImagePath(_defaultImgsPath + "dhxgrid_web/");		
 		
 		_dhtmlxGrid.attachEvent("onRowSelect", _me.CallbackOnSelect);
 		_dhtmlxGrid.attachEvent("onFilterEnd", _me.CallbackOnFilterEnd);
@@ -323,7 +321,7 @@ function ItemGrid(__id, __target, __xml)
 		
 		_dhtmlxGrid.setColumnIds(_evaluate(_me,_whichColumns, true));
 		_dhtmlxGrid.setColTypes(_getColumnTypes());
-		_dhtmlxGrid.setColAlign(_getColumnAlignment());
+		_dhtmlxGrid.setColAlign(_getColumnAlignment()); console.log(_getColumnAlignment());
 		_dhtmlxGrid.setInitWidths(_getColumnWidths());
 		_dhtmlxGrid.setColumnColor(_getColumnColours());
 		_dhtmlxGrid.setColSorting(_getColumnSorting());
@@ -454,6 +452,7 @@ function ItemGrid(__id, __target, __xml)
 	
 	function _addColumnDefinition(_c_name, _c_treatAs, _c_align, _c_width, _c_colour, _c_sortAs, _c_format)
 	{
+		console.log("Grid Column: " + _c_name + ": " + _c_align);
 		_columns[_columns.length] = new ColumnDefinition(_c_name, _c_treatAs, _c_align, _c_width, _c_colour, _c_sortAs, _c_format);
 	}
 	
@@ -645,13 +644,14 @@ function ItemGrid(__id, __target, __xml)
 	{
 		if(_columnAlign!=null) return _evaluate(_me, _columnAlign, true);
 
-		var _headers		= _evaluate(_me, _whichColumns, true);
+		var _headers		= _evaluate(_me, _whichColumns, true).split(",");
 		var _str			= "";
 		
 		for(var p=0; p<_headers.length; p++)
 		{
 			if(p>0) _str += ",";
-			_str += _getColumnAlign(_headers[p]);
+			var _s = _getColumnAlign(_headers[p]);
+			_str += _s;
 		}
 
 		return _str;
