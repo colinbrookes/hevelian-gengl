@@ -42,11 +42,11 @@ function Tabbar(__id, __target, __xml)
 	if(_orientation==null) 	_orientation = 'top';
 	if(_align==null)		_align = 'left';
 	
-	_dhtmlxTabbar = (_target.attachTabbar!=null)? _target.attachTabbar(_orientation) : new dhtmlXTabBar(_id, _orientation);
+	_dhtmlxTabbar = (_target.attachTabbar!=null)? _target.attachTabbar({mode: _orientation}) : new dhtmlXTabBar(_id, _orientation);
 	_dhtmlxTabbar.setAlign(_align);
-	_dhtmlxTabbar.setSkin('dhx_skyblue');
-	_dhtmlxTabbar.setImagePath(_defaultImgsPath);
-	_dhtmlxTabbar.setHrefMode("iframes-on-demand");
+//	_dhtmlxTabbar.setSkin('dhx_skyblue');
+//	_dhtmlxTabbar.setImagePath(_defaultImgsPath);
+//	_dhtmlxTabbar.setHrefMode("iframes-on-demand");
 	_dhtmlxTabbar.enableContentZone(true);
 	if(_margin!=null) _dhtmlxTabbar.setMargin(_margin);
 	if(_offset!=null) _dhtmlxTabbar.setOffset(_offset);

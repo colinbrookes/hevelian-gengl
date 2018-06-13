@@ -23,7 +23,6 @@ _snapObj				= null;
 
 function Container(_node, _n_id, _toNode, _prefix)
 {
-
 	this.Node					= _node;
 	this.Id						= _n_id;
 	this.ToNode					= _toNode;
@@ -76,11 +75,14 @@ function Container(_node, _n_id, _toNode, _prefix)
 	// cant have collapsible without a header
 	if(_f_withHeader==false) 	_f_collapsible = false;
 	
-	var _to					= _findHTMLObject(_toNode, 'dhxMainCont');
+	var _to					= _findHTMLObject(_toNode, 'dhx_cell_cont_layout');
 	if(_to==null) 		_to = _toNode;
 	
-	_to.style.float 		= 'left';
-	_to.style.display 		= 'inline-block';
+	console.log(_to);
+	if(_to.style!=null) {
+		_to.style.float 		= 'left';
+		_to.style.display 		= 'inline-block';
+	}
 
 	if(_to.id==_n_id) 
 	{

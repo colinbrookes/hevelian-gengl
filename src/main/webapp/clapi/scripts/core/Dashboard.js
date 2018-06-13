@@ -556,6 +556,8 @@ function Dashboard()
 	{
 		var _name = new String(_node.nodeName);
 		
+		console.log("CELL: " + _cell);
+		
 		// first check if it is in the dictionary
 		var _dicItem = _dictionary.words.get(_name.toLowerCase());
 		if(_dicItem!=null)
@@ -1029,7 +1031,7 @@ function Dashboard()
 			
 		}
 		
-		_object.GetTabbar().setTabActive(_t_default);
+		_object.GetTabbar().tabs(_t_default).setActive();
 		_object.Draw();
 		
 		LateLoading();
