@@ -48,18 +48,18 @@ function _debugInit(_to)
 	
 	// create the master layout
 	var _debugLayout 	= new dhtmlXLayoutObject(_to, '1C');
-	_debugLayout.setImagePath(_defaultImgsPath);
+//	_debugLayout.setImagePath(_defaultImgsPath);
 	_debugLayout.cells('a').hideHeader();
 	
 	// add the main tabbar
 	var _debugTabbar	=  _debugLayout.cells('a').attachTabbar();
-	_debugTabbar.setSkin('dhx_skyblue');
-	_debugTabbar.setImagePath(_defaultImgsPath);
-	_debugTabbar.setHrefMode("iframes-on-demand");
+//	_debugTabbar.setSkin('dhx_skyblue');
+//	_debugTabbar.setImagePath(_defaultImgsPath);
+//	_debugTabbar.setHrefMode("iframes-on-demand");
 	_debugTabbar.enableContentZone(true);
 	_debugTabbar.addTab('page', 'your page', 100);
 	_debugTabbar.addTab('debug', 'debugger', 100);
-	_debugTabbar.setTabActive('page');
+	_debugTabbar.tabs('page').setActive('page');
 	
 	
 	// insert the two layouts
@@ -80,9 +80,9 @@ function _debugInit(_to)
 function _debugInitDebugLayouts()
 {
 	_debugTabbarDebug = _debugLayoutDebug.cells('a').attachTabbar();
-	_debugTabbarDebug.setSkin('dhx_skyblue');
-	_debugTabbarDebug.setImagePath(_defaultImgsPath);
-	_debugTabbarDebug.setHrefMode("iframes-on-demand");
+//	_debugTabbarDebug.setSkin('dhx_skyblue');
+//	_debugTabbarDebug.setImagePath(_defaultImgsPath);
+//	_debugTabbarDebug.setHrefMode("iframes-on-demand");
 	_debugTabbarDebug.enableContentZone(true);
 	
 	_debugTabbarDebug.addTab('monitor', 'monitor', 100);
@@ -92,7 +92,7 @@ function _debugInitDebugLayouts()
 	_debugTabbarDebug.addTab('events', 'events', 100);
 	_debugTabbarDebug.addTab('dictionary', 'dictionary', 100);
 	_debugTabbarDebug.addTab('messages', 'messages', 100);
-	_debugTabbarDebug.setTabActive('monitor');
+	_debugTabbarDebug.tabs('monitor').setActive();
 	
 	_debugLayoutMonitor = _debugTabbarDebug.cells('monitor').attachLayout('1C');
 	_debugLayoutMonitor.cells('a').hideHeader();
@@ -130,8 +130,8 @@ function _debugInitDebugLayouts()
 function _debugInitDictionary()
 {
 	_debugDictGrid = _debugDictLayout.cells('a').attachGrid();
-	_debugDictGrid.setImagePath(_defaultImgsPath);
-	_debugDictGrid.setSkin("dhx_skyblue");
+//	_debugDictGrid.setImagePath(_defaultImgsPath);
+//	_debugDictGrid.setSkin("dhx_skyblue");
 	
 	_debugDictGrid.setHeader('XML Tag,Object Name');
 	_debugDictGrid.setInitWidths('250,*');
@@ -168,8 +168,8 @@ function _debugInitMessagesGrid()
 	_debugMessagesToolbar.setItemState('enabled', true);
 
 	_debugMessagesGrid = _debugLayoutMessages.cells('a').attachGrid();
-	_debugMessagesGrid.setImagePath(_defaultImgsPath);
-	_debugMessagesGrid.setSkin("dhx_skyblue");
+//	_debugMessagesGrid.setImagePath(_defaultImgsPath);
+//	_debugMessagesGrid.setSkin("dhx_skyblue");
 	
 	_debugMessagesGrid.setHeader(',#text_filter,#text_filter,#text_filter');
 	_debugMessagesGrid.attachHeader('time,level,from,message');
@@ -187,8 +187,8 @@ function _debugInitObjectsGrid()
 	_debugObjectsToolbar.addButton('redrawObjects', 0, 'refresh', 'refresh.png', 'refresh.png');
 
 	_debugObjectsGrid = _debugLayoutObjects.cells('a').attachGrid();
-	_debugObjectsGrid.setImagePath(_defaultImgsPath);
-	_debugObjectsGrid.setSkin("dhx_skyblue");
+//	_debugObjectsGrid.setImagePath(_defaultImgsPath);
+//	_debugObjectsGrid.setSkin("dhx_skyblue");
 	
 	_debugObjectsGrid.setHeader('id (cnt: {#stat_count}),type');
 	_debugObjectsGrid.setColAlign('left,left');
@@ -196,20 +196,20 @@ function _debugInitObjectsGrid()
 	_debugObjectsGrid.init();
 	
 	_debugObjectsTabbar		= _debugLayoutObjects.cells('b').attachTabbar();
-	_debugObjectsTabbar.setSkin('dhx_skyblue');
-	_debugObjectsTabbar.setImagePath(_defaultImgsPath);
-	_debugObjectsTabbar.setHrefMode("iframes-on-demand");
+//	_debugObjectsTabbar.setSkin('dhx_skyblue');
+//	_debugObjectsTabbar.setImagePath(_defaultImgsPath);
+//	_debugObjectsTabbar.setHrefMode("iframes-on-demand");
 	_debugObjectsTabbar.enableContentZone(true);
 	
 	_debugObjectsTabbar.addTab('events', 'events', 75);
 	_debugObjectsTabbar.addTab('properties', 'properties', 75);	
 	_debugObjectsTabbar.addTab('container', 'container', 75);
 	_debugObjectsTabbar.addTab('style', 'style', 75);
-	_debugObjectsTabbar.setTabActive('properties');
+	_debugObjectsTabbar.tabs('properties').setActive();
 
 	_debugObjectsPropsGrid		= _debugObjectsTabbar.cells('properties').attachGrid();
-	_debugObjectsPropsGrid.setImagePath(_defaultImgsPath);
-	_debugObjectsPropsGrid.setSkin("dhx_skyblue");
+//	_debugObjectsPropsGrid.setImagePath(_defaultImgsPath);
+//	_debugObjectsPropsGrid.setSkin("dhx_skyblue");
 	_debugObjectsPropsGrid.setHeader('name,value');
 	_debugObjectsPropsGrid.setColAlign('left,left');
 	_debugObjectsPropsGrid.setInitWidths("200,*");
@@ -220,8 +220,8 @@ function _debugInitObjectsGrid()
 	_debugObjectsEventsLayout.cells('b').setText('dependencies');
 	
 	_debugObjectsWantEventsGrid = _debugObjectsEventsLayout.cells('a').attachGrid();
-	_debugObjectsWantEventsGrid.setImagePath(_defaultImgsPath);
-	_debugObjectsWantEventsGrid.setSkin("dhx_skyblue");
+//	_debugObjectsWantEventsGrid.setImagePath(_defaultImgsPath);
+//	_debugObjectsWantEventsGrid.setSkin("dhx_skyblue");
 	
 	_debugObjectsWantEventsGrid.setHeader('Target,Wants,From,To,Propogate,Call Cnt ({#stat_total})');
 	_debugObjectsWantEventsGrid.setInitWidths('150,150,150,250,150,100');
@@ -229,8 +229,8 @@ function _debugInitObjectsGrid()
 	_debugObjectsWantEventsGrid.init();
 
 	_debugObjectsDependEventsGrid = _debugObjectsEventsLayout.cells('b').attachGrid();
-	_debugObjectsDependEventsGrid.setImagePath(_defaultImgsPath);
-	_debugObjectsDependEventsGrid.setSkin("dhx_skyblue");
+//	_debugObjectsDependEventsGrid.setImagePath(_defaultImgsPath);
+//	_debugObjectsDependEventsGrid.setSkin("dhx_skyblue");
 	
 	_debugObjectsDependEventsGrid.setHeader('Target,Wants,From,To,Propogate,Call Cnt ({#stat_total})');
 	_debugObjectsDependEventsGrid.setInitWidths('150,150,150,250,150,100');
@@ -249,18 +249,18 @@ function _debugInitEventsGrid()
 	_debugEventsToolbar.addButton('redrawEvents', 0, 'refresh', 'refresh.png', 'refresh.png');
 	
 	_debugEventsTabbar = _debugLayoutEvents.cells('a').attachTabbar();
-	_debugEventsTabbar.setSkin('dhx_skyblue');
-	_debugEventsTabbar.setImagePath(_defaultImgsPath);
-	_debugEventsTabbar.setHrefMode("iframes-on-demand");
+//	_debugEventsTabbar.setSkin('dhx_skyblue');
+//	_debugEventsTabbar.setImagePath(_defaultImgsPath);
+//	_debugEventsTabbar.setHrefMode("iframes-on-demand");
 	_debugEventsTabbar.enableContentZone(true);
 	
 	_debugEventsTabbar.addTab('events', 'events', 75);
 	_debugEventsTabbar.addTab('tree', 'tree', 75);
-	_debugEventsTabbar.setTabActive('events');
+	_debugEventsTabbar.tabs('events').setActive();
 	
 	_debugEventsGrid = _debugEventsTabbar.cells('events').attachGrid();
-	_debugEventsGrid.setImagePath(_defaultImgsPath);
-	_debugEventsGrid.setSkin("dhx_skyblue");
+//	_debugEventsGrid.setImagePath(_defaultImgsPath);
+//	_debugEventsGrid.setSkin("dhx_skyblue");
 	
 	_debugEventsGrid.setHeader('Target,Wants,From,To,Propogate,Call Cnt ({#stat_total})');
 	_debugEventsGrid.setInitWidths('150,150,150,250,150,100');
@@ -268,7 +268,7 @@ function _debugInitEventsGrid()
 	_debugEventsGrid.init();
 	
 	_debugEventsTree = _debugEventsTabbar.cells('tree').attachTree();
-	_debugEventsTree.setImagePath("clapi/ui/imgs/");
+//	_debugEventsTree.setImagePath("clapi/ui/imgs/");
 	_debugEventsTree.enableHighlighting(true);
 	_debugDrawEventData();
 }
@@ -282,18 +282,18 @@ function _debugInitCollectionsGrid()
 	_debugCollectionsToolbar.addButton('redrawCollections', 0, 'refresh', 'refresh.png', 'refresh.png');
 	
 	_debugCollectionsTabbar		= _debugLayoutCollections.cells('b').attachTabbar();
-	_debugCollectionsTabbar.setSkin('dhx_skyblue');
-	_debugCollectionsTabbar.setImagePath(_defaultImgsPath);
-	_debugCollectionsTabbar.setHrefMode("iframes-on-demand");
+//	_debugCollectionsTabbar.setSkin('dhx_skyblue');
+//	_debugCollectionsTabbar.setImagePath(_defaultImgsPath);
+//	_debugCollectionsTabbar.setHrefMode("iframes-on-demand");
 	_debugCollectionsTabbar.enableContentZone(true);
 	
 	_debugCollectionsTabbar.addTab('data', 'items', 75);
 	_debugCollectionsTabbar.addTab('query', 'query', 75);
-	_debugCollectionsTabbar.setTabActive('data');
+	_debugCollectionsTabbar.tabs('data').setActive();
 	
 	_debugCollectionsGrid = _debugLayoutCollections.cells('a').attachGrid();
-	_debugCollectionsGrid.setImagePath(_defaultImgsPath);
-	_debugCollectionsGrid.setSkin("dhx_skyblue");
+//	_debugCollectionsGrid.setImagePath(_defaultImgsPath);
+//	_debugCollectionsGrid.setSkin("dhx_skyblue");
 	
 	_debugCollectionsGrid.setHeader('Collection,#cspan,Connector Types (hits),#cspan,#cspan,#cspan');
 	_debugCollectionsGrid.attachHeader('Name,Itm cnt,select,update,delete,create');
@@ -439,7 +439,7 @@ function _debugDrawCollectionsData()
 			_ar[4] = _item.value.GetTypeDelete() + ' (' + _item.value.GetCountDelete() + ')';
 			_ar[5] = _item.value.GetTypeCreate() + ' (' + _item.value.GetCountCreate() + ')';
 			
-			_arAll[_arAll.length] = { id:i, data:_ar };
+			_arAll[_arAll.length] = { id:i+1, data:_ar };
 		} catch(e) { }
 	}
 	
@@ -494,8 +494,11 @@ function _debugToolbarsCallBack(_clickedItem)
 
 function _debugRefreshMonitor()
 {
-	var _target 							= _findHTMLObject(_debugLayoutMonitor.cells('a'), 'dhxMainCont');
+//	var _target 							= _findHTMLObject(_debugLayoutMonitor.cells('a'), 'dhx_cell_cont_layout');
 	var _divTimeline				= document.getElementById('debugTimeline');
+	
+	
+	var _target = _debugLayoutMonitor.cells('a').cell;
 	
 	_target.style.overflow		= 'auto';
 	_target.style.fontFamily	= 'Courier';
@@ -785,8 +788,8 @@ function _debugObjectsGridRowSelect(_row)
 	var _id							= _object.GetId();
 	var _container				= _getContainerForObjectId(_id);
 	
-	var _tabContainer			= _findHTMLObject(_debugObjectsTabbar.cells('container'), 'dhxMainCont');
-	var _tabStyle					= _findHTMLObject(_debugObjectsTabbar.cells('style'), 'dhxMainCont');
+	var _tabContainer			= _debugObjectsTabbar.cells('container').cell; //_findHTMLObject(_debugObjectsTabbar.cells('container'), 'dhx_cell_cont_layout');
+	var _tabStyle					= _debugObjectsTabbar.cells('style').cell; // _findHTMLObject(_debugObjectsTabbar.cells('style'), 'dhx_cell_cont_layout');
 	
 	_tabContainer.style.overflow 			= 'auto';
 	_tabContainer.style.fontFamily		='Courier';
@@ -887,6 +890,8 @@ function _getContainerForObjectId(_id)
 
 function _debugCollectionsGridRowSelect(_row)
 {
+	console.log("select row fired");
+	
 	if(_debugCollectionDetailsGrid!=null)
 	{
 		_debugCollectionDetailsGrid.destructor();
@@ -895,8 +900,8 @@ function _debugCollectionsGridRowSelect(_row)
 	
 	try {
 		_debugCollectionDetailsGrid = _debugCollectionsTabbar.cells('data').attachGrid();
-		_debugCollectionDetailsGrid.setImagePath(_defaultImgsPath);
-		_debugCollectionDetailsGrid.setSkin("dhx_skyblue");
+//		_debugCollectionDetailsGrid.setImagePath(_defaultImgsPath);
+//		_debugCollectionDetailsGrid.setSkin("dhx_skyblue");
 		
 		var _collection = _Collections[parseInt(_row,10)].value;
 		
@@ -931,8 +936,8 @@ function _debugCollectionsGridRowSelect(_row)
 	
 	try {
 		_debugCollectionQueryGrid = _debugCollectionsTabbar.cells('query').attachGrid();
-		_debugCollectionQueryGrid.setImagePath(_defaultImgsPath);
-		_debugCollectionQueryGrid.setSkin("dhx_skyblue");
+//		_debugCollectionQueryGrid.setImagePath(_defaultImgsPath);
+//		_debugCollectionQueryGrid.setSkin("dhx_skyblue");
 		_debugCollectionQueryGrid.setHeader('evaluated');
 		_debugCollectionQueryGrid.init();
 		
@@ -942,7 +947,9 @@ function _debugCollectionsGridRowSelect(_row)
 
 function _debugPretifySource(_xml, _to)
 {
-	var _frame = _findHTMLObject(_to, 'dhxMainCont');
+	var _frame = _to.cell; //_findHTMLObject(_to, 'dhx_cell_cont_layout');
+	
+	_frame.innerHTML = '';
 	
 	_frame.style.overflow 		= 'auto';
 	_frame.style.fontFamily		= 'Courier';
@@ -958,12 +965,20 @@ function _debugProcessXML(_level, _node, _root)
 	var _str		= '';
 	var _indent 	= parseInt(_level, 10) * 15;
 	
+	if(_level==0) {
+		_str 		+= '<img  src="clapi/images/nixel.gif" style="border: 0px solid blue; display:none;" width="'+_indent+'px" height="16px"/>';
+	}
 	// first we add the line padding
 	if(_node.nodeName!='#document')
 	{
-		if(_root==null||_root!="yes") { _str += '<br/>';  if(_level==0) _str += '<br/>'; }
+		if(_root==null||_root!="yes") { 
+			_str += '<br/>';  
+			if(_level==0) _str += '<br/>'; 
+			_str 		+= '<img  src="clapi/images/nixel.gif" style="border: 0px solid red;" width="'+_indent+'px" height="16px"/>';
+		}
 		
-		_str 		+= '<img src="clapi/images/nixel.gif" style="border: 0px solid red" width="'+_indent+'px" height="16px"/>';
+		
+//		_str 		+= '<img  src="clapi/images/nixel.gif" style="border: 1px solid red;" width="'+_indent+'px" height="16px"/>';
 		_str		+= '<font color="#a0a0a0">&lt;' + _node.nodeName;
 		if(_node.attributes.length>0) 
 		{
@@ -1004,7 +1019,7 @@ function _debugProcessXML(_level, _node, _root)
 				break;
 				
 			case 8:		// comment
-				_str += '<br/>' + '<img src="clapi/images/nixel.gif" style="border: 0px solid red" width="'+(_indent+15)+'px" height="16px"/>';
+				_str += '<br/>' + '<img class="noClass" src="clapi/images/nixel.gif" style="border: 0px solid red; height:16px !important;" width="'+(_indent+15)+'px" height="16px"/>';
 				_str += '<font color="#00a000">'
 				_str += '&lt;!-- ' + Encoder.htmlEncode(_node.childNodes[i].nodeValue) + ' --&gt;</font>';
 				break;
@@ -1014,7 +1029,7 @@ function _debugProcessXML(_level, _node, _root)
 	if(_node.nodeName!='#document')
 	{
 		if(_nonText>0) { _str += '<br/>';  }
-		if(_text<=0) _str += '<img src="clapi/images/nixel.gif" style="border: 0px solid red" width="'+_indent+'px" height="16px"/>';
+		if(_text<=0) _str += '<img class="noClass" src="clapi/images/nixel.gif" style="border: 0px solid red;  height:16px !important;" width="'+_indent+'px" height="16px"/>';
 		_str += '<font color="#a0a0a0">&lt;/' + _node.nodeName + '&gt;</font>';
 		
 		if(_nonText>0 && (_level==2 || _level==3)) _str += '<br/>';

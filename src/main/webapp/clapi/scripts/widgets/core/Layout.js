@@ -466,6 +466,9 @@ function Layout(__node, __target, __prefix) {
 				_page.cells(_idc).setText(_header);
 
 			var _pageCell = _page.cells(_idc);
+			
+			console.log("LAYOUT CELL INFO");
+			console.log(_pageCell);
 
 			// for DaD components, we need to set the snapTo stuff
 			var _snapTo = _findChild('snapTo', _cell);
@@ -511,7 +514,7 @@ function Layout(__node, __target, __prefix) {
 			}
 		}
 
-		var _x = _findHTMLObject(_page.cells(_idc), 'dhxMainCont');
+		var _x = _findHTMLObject(_page.cells(_idc), 'dhx_cell_cont_layout');
 
 		if (_x != null && _enableScrolling == true) {
 			_x.style.overflowX = 'auto';

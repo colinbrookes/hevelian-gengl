@@ -21,6 +21,7 @@ function Panel(__id, __xml, __target)
 	var _headers					= __xml.getAttribute('columnheaders');
 	var _widths		 				= __xml.getAttribute('columnwidths');
 	var _zIndex		 				= __xml.getAttribute('zIndex');
+	var _width						= __xml.getAttribute('width');
 	var _target						= __target;
 	var _handler					= null;
 	var _me							= this;
@@ -70,7 +71,9 @@ function Panel(__id, __xml, __target)
 	
 	function _toggleHideShow()
 	{
-		var _div = document.getElementById(_hideShowId);
+		console.log("Panel HideShow div ID: " + _hideShowId);
+		
+		var _div = document.getElementById("Panel_" + _hideShowId);
 		if(_div==null) return;
 		
 		if(_div.style.display=='none') return _div.style.display = 'block';
@@ -79,7 +82,7 @@ function Panel(__id, __xml, __target)
 	
 	function _hide()
 	{
-		var _div = document.getElementById(_hideShowId);
+		var _div = document.getElementById("Panel_" + _hideShowId);
 		if(_div==null) return;
 		
 		if(_div.style.display=='none') return;
@@ -89,7 +92,7 @@ function Panel(__id, __xml, __target)
 	
 	function _show()
 	{
-		var _div = document.getElementById(_hideShowId);
+		var _div = document.getElementById("Panel_" + _hideShowId);
 		if(_div==null) return;
 		
 		if(_div.style.display=='block') return;
@@ -170,34 +173,33 @@ function Panel(__id, __xml, __target)
 	
 	function _drawXHTML()
 	{
-		var _body		= null;
 		
-		if(_target.getFrame==null)
-		{
+		var _body		= _target;
+		var _div		= null;
+		
+		var existingPanelDiv = document.getElementById("Panel_" + _id);
+		if(existingPanelDiv==null) {
+			_div = document.createElement('DIV');
+			_div.style.display	= 'inline-block';
+			_div.style.float	= 'left';
+
+			_div.setAttribute('id', 'Panel_' + _id);
+			_target.appendChild(_div);
+			_target = _div;
 			_body = _target;
-		} else
-		{
-			try {
-				var _frame = _target.getFrame();
-				_body	= (_frame.contentWindow!=null)? _frame.contentWindow.document.body : _frame.contentDocument.document.body;
-			} catch(e) { }
-			if(_body==null) _body = _target;
-			var _other = _findHTMLObject(_body, 'dhxMainCont');
-			if(_other!=null)
-			{
-				_body = _other;
+			
+			_body.style.overflow	= 'auto';
+			_body.style.padding		= '0px';
+			_body.style.margin		= '0px';
+
+			if(_width!=null) {
+				_body.style.width		= _width;
 			}
+			_body.style.zIndex		= (_zIndex==null)? 1 : _zIndex;
+		} else {
+			_body = existingPanelDiv;
 		}
-		
-		_body.style.overflow	= 'auto';
-		_body.style.padding		= '0px';
-		_body.style.margin		= '0px';
-		_body.style.zIndex		= (_zIndex==null)? 1 : _zIndex;
-		
-//		_body.addEventListener('mouseover', _me.fireOnMouseOver, false);
-//		_body.addEventListener('mouseout', 	_me.fireOnMouseOut, false);
-//		_body.addEventListener('click', 	_me.fireOnClick, false);
-//		_body.addEventListener('load', 		_me.fireOnLoad, false);
+
 		
 		// has it been provided as an external file reference - then we fetch it
 		if(_from!=null)
@@ -206,7 +208,7 @@ function Panel(__id, __xml, __target)
 			_ajax.open('GET', _from, false);
 			_ajax.send(null);
 			
-			// now the actual rendering of the SVG into the view.
+			// now the actual rendering of the html into the view.
 			_body.innerHTML			= _ajax.responseText;
 			
 			return;

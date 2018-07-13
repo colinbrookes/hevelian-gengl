@@ -27,6 +27,8 @@ function Container(_node, _n_id, _toNode, _prefix)
 	this.Id						= _n_id;
 	this.ToNode					= _toNode;
 	this.Prefix					= _prefix;
+	this.TargetNode				= null;
+	this.dhtmlxTarget			= null;
 	
 	this.WithHeader				= function _withHeader() { return _f_withHeader; }
 	this.WithToolbar			= function _withToolbar() { return _f_withToolbar; }
@@ -39,12 +41,25 @@ function Container(_node, _n_id, _toNode, _prefix)
 	
 	_Containers[_Containers.length] = new kvp(_n_id, this);
 	
+	if(_toNode.cell!=null) {
+		this.dhtmlxTarget = _toNode;
+		for(var i=0; i<_toNode.cell.childNodes.length; i++) {
+			if(_toNode.cell.childNodes[i].className.substring(0,13)=="dhx_cell_cont") {
+				console.log("FOUND CELL CONT NODE");
+				this.TargetNode = _toNode.cell.childNodes[i];
+				break;
+			}
+		}
+	} else {
+		this.TargetNode = _toNode;
+	}
+	
 	// the main code is in the init-space and not functions
 	var _me						= _getObjectByName('Dashboard');
 	var _hideShowId 			= null;
 	var _div_position			= _node.getAttribute('position');
 	var _div_zIndex				= _node.getAttribute('zIndex');
-	var _Container				= {hideShowId : _hideShowId, target : _toNode }
+	var _Container				= {hideShowId : _hideShowId, target : this.TargetNode , dhtmlxTarget: this.dhtmlxTarget}
 	var _heightHeader			= 0;
 	var _borderThickness		= 0;
 	var _borderWidth			= 0;
@@ -75,10 +90,9 @@ function Container(_node, _n_id, _toNode, _prefix)
 	// cant have collapsible without a header
 	if(_f_withHeader==false) 	_f_collapsible = false;
 	
-	var _to					= _findHTMLObject(_toNode, 'dhx_cell_cont_layout');
+	var _to					= (_toNode.cell!=null)? _toNode.cell.lastChild : _toNode; //_findHTMLObject(_toNode, 'dhx_cell_cont_layout');
 	if(_to==null) 		_to = _toNode;
 	
-	console.log(_to);
 	if(_to.style!=null) {
 		_to.style.float 		= 'left';
 		_to.style.display 		= 'inline-block';

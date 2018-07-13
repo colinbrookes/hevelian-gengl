@@ -16,7 +16,7 @@ _MantaActions.set('IsLoggedIn', 								'access_control/Action_IsLoggedIn.php');
 _MantaActions.set('FetchUserProperties', 				'access_control/Action_FetchUserProperties.php');
 */
 
-_MantaRoot		= "../exoniteJ/";
+_MantaRoot		= "../hevelian-exonite/";
 _MantaActions 	= new MantaArray()
 
 _MantaActions.set('login', 								'Login.jsp');

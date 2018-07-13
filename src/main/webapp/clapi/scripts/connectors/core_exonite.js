@@ -74,20 +74,19 @@ function ExoniteConnector(__xml)
 		_parameters		= _processParameters(_XML, _collection, _handler, null, _refresh, '&');
 		if(_parameters == null) { _failed=true; return _items; }
 		
-//		var _newUrl = _evaluate(_collection, 'server/php/exonite_collection.php?collection=' + _from + '.xml', true, _collection.GetId());
-		var _newUrl = _evaluate(_collection, '../exoniteJ/GetCollection.jsp?collection=' + _from, true, _collection.GetId());
+		var _newUrl = _evaluate(_collection, '../hevelian-exonite/api/collection.svc/' + _from + "?", true, _collection.GetId());
 		
 		if(_params!=null && _parameters==_params && _items.length>0 && _newUrl==_url)
 		{
-			return _items;
+			console.log("NOT FETCHING ANYTHING!");
+//			return _items;
 		}
 		
 		_params 				= _parameters;
 		_items					= [];
 		
 		var _ajax 		= new sisAJAXConnector();
-//		_url 				= (_parameters!=null)? _evaluate(_collection, 'server/php/exonite_collection.php?collection=' + _from + '.xml', true, _collection.GetId()) + _parameters : _evaluate(_collection, 'server/php/exonite_collection.php?collection=' + _from + '.xml', true, _collection.GetId());
-		_url 				= (_parameters!=null)? _evaluate(_collection, '../exoniteJ/GetCollection.jsp?collection=' + _from, true, _collection.GetId()) + _parameters : _evaluate(_collection, '../exoniteJ/GetCollection.jsp?collection=' + _from, true, _collection.GetId());
+		_url 				= (_parameters!=null)? _evaluate(_collection, '../hevelian-exonite/api/collection.svc/' + _from + "?", true, _collection.GetId()) + _parameters : _evaluate(_collection, '../exoniteJ/GetCollection.jsp?collection=' + _from, true, _collection.GetId());
 		_ajax.open("GET", _evaluate(_collection, _url, true), false);
 		_ajax.send(null);
 		

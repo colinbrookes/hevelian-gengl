@@ -556,8 +556,6 @@ function Dashboard()
 	{
 		var _name = new String(_node.nodeName);
 		
-		console.log("CELL: " + _cell);
-		
 		// first check if it is in the dictionary
 		var _dicItem = _dictionary.words.get(_name.toLowerCase());
 		if(_dicItem!=null)
@@ -689,6 +687,16 @@ function Dashboard()
 		var _container			= new Container(_node, _n_id, _to, _prefix);
 		var _toNode 			= _container.target;
 		
+//		if(_container.cell!=null) {
+//			console.log("foreach container cell is not null");
+//			_toNode = _to;
+//		}
+		
+//			_toNode = _to.cell;
+		
+		console.log("initForEach Container Target: " + _container.target);
+		console.log(_container);
+		
 		var _object				= new ForEach(_n_id, _toNode, _node);
 		
 		_object.SetDashboard(_me);
@@ -713,6 +721,10 @@ function Dashboard()
 		var _container			= new Container(_node, _n_id, _to, _prefix);
 		var _toNode 				= _container.target;
 		
+		if(_container.target==null) {
+			_toNode = _to;
+		}
+
 		var _object					= new If(_n_id, _toNode, _node);
 		
 		_object.SetDashboard(_me);
@@ -790,7 +802,14 @@ function Dashboard()
 		var _panel_type				= _node.getAttribute('type');
 		var _div_hide				= _node.getAttribute('HideOnOpen');
 		var _container				= new Container(_node, _n_id, _to, _prefix);
-		var _toNode 				= _container.target;
+//		var _toNode 				= (_container.dhtmlxTarget!=null)? _container.dhtmlxTarget : _container.target;
+
+		var _toNode 			= _container.target;
+		
+		if(_toNode.cell!=null) {
+			console.log("foreach container cell is not null");
+			_toNode = _to;
+		}
 		
 		var _object					= new Panel(_n_id, _node, _toNode);
 		
@@ -834,7 +853,7 @@ function Dashboard()
 		var _g_id				= _prefix + _node.getAttribute('id');
 		
 		var _container			= new Container(_node, _g_id, _to, _prefix);
-		var _toNode 			= _container.target;
+		var _toNode 			= (_container.dhtmlxTarget!=null)? _container.dhtmlxTarget : _container.target;
 		
 		if(_toNode==null || _toNode.getAttribute('id')==null)
 		{
@@ -885,7 +904,7 @@ function Dashboard()
 		var _div_hide			= _node.getAttribute('HideOnOpen');
 		
 		var _container			= new Container(_node, _n_id, _to, _prefix);
-		var _toNode 			= _container.target;
+		var _toNode 			= (_container.dhtmlxTarget!=null)? _container.dhtmlxTarget : _container.target;
 		
 		var _object				= new Chart(_n_id, _toNode, _node);
 		
@@ -911,13 +930,15 @@ function Dashboard()
 		if(_div_position=='absolute' && _div_hide!=null && _div_hide=="true") _object.Hide();
 		
 		_Charts[_Charts.length] = _object;
-		try {
-			_object.Draw();
-		} catch(e) { }
-		
-		_LateLoaders[_LateLoaders.length] = _object;
-		_NeedLateLoaders++;
 
+		_object.Draw();
+
+//		try {
+//		} catch(e) { console.log("ERROR DRAWING CHART!"); }
+		
+//		_LateLoaders[_LateLoaders.length] = _object;
+//		_NeedLateLoaders++;
+		
 		return _object;
 	}
 	
@@ -997,7 +1018,7 @@ function Dashboard()
 		var _div_position		= _node.getAttribute('position');
 		var _div_hide			= _node.getAttribute('HideOnOpen');
 		var _container			= new Container(_node, _n_id, _to, _prefix);
-		var _toNode 			= _container.target;
+		var _toNode 			= (_container.dhtmlxTarget!=null)? _container.dhtmlxTarget : _container.target;
 		
 		var _object			= new Tabbar(_n_id, _toNode, _node);
 		
@@ -1050,7 +1071,7 @@ function Dashboard()
 		var _div_position		= _node.getAttribute('position');
 		var _div_hide				= _node.getAttribute('HideOnOpen');
 		var _container			= new Container(_node, _n_id, _to, _prefix);
-		var _toNode 				= _container.target;
+		var _toNode 				= (_container.dhtmlxTarget!=null)? _container.dhtmlxTarget : _container.target;
 		
 		var _object 				= new ItemView(_n_id, _v_collection, _toNode);
 		
@@ -1113,7 +1134,7 @@ function Dashboard()
 		var _div_position				= _node.getAttribute('position');
 		var _div_hide						= _node.getAttribute('HideOnOpen');
 		var _container					= new Container(_node, _n_id, _to, _prefix);
-		var _toNode 						= _container.target;
+		var _toNode 						= (_container.dhtmlxTarget!=null)? _container.dhtmlxTarget : _container.target;
 		
 		var _object 			= new ItemGrid(_n_id, _toNode, _node);
 		

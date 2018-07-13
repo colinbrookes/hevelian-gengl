@@ -25,6 +25,13 @@ function _initToolbar(_node, _to, _prefix, _me)
 								_child.getAttribute('width'), null);
 				break;
 				
+			case 'toolToggle':			
+				_object.AddTool('toggle', _child.getAttribute('id'), 
+								_child.getAttribute('icon'), _child.getAttribute('name'), 
+								null, _child.getAttribute('name'), null, null, null, null, null, null, 
+								_child.getAttribute('to'));
+				break;
+
 			case 'toolButton':			
 				_object.AddTool('button', _child.getAttribute('id'), 
 								_child.getAttribute('icon'), _child.getAttribute('name'), 
@@ -109,6 +116,7 @@ function Toolbar(__id, __target, __node)
 	// fired events
 	function _fireOnClick(_item)
 	{
+		console.log("FORE ON CLICK EVENT FROM TOOLBAR");
 		var _parts		 = _item.split('^');
 		_lastClicked	= _parts[1];
 		
@@ -198,6 +206,7 @@ function Toolbar(__id, __target, __node)
 		_dhtmlxToolbar = (_target.attachToolbar!=null)? _target.attachToolbar() : new dhtmlXToolbarObject(_id);
 		_dhtmlxToolbar.setIconsPath(_iconsPath);
 		_dhtmlxToolbar.attachEvent("onClick", this.CallbackOnClick);
+		_dhtmlxToolbar.attachEvent("onStateChange", this.CallbackOnClick);
 		
 		
 		for(var i=0; i<_tools.length; i++)
@@ -210,7 +219,8 @@ function Toolbar(__id, __target, __node)
 				case 'text':			_dhtmlxToolbar.addText(_id + "^" + _tool.id, i, _evaluate(_me, _tool.name, (_tool.refresh!='never')? true : false)); break;
 				case 'select':			_drawSelect(i); break;
 				case 'date':			_drawDateTime(i); break;
-				case 'input':			_dhtmlxToolbar.addInput(_id + "^" + _tool.id, i, '', _tool.width);
+				case 'input':			_dhtmlxToolbar.addInput(_id + "^" + _tool.id, i, '', _tool.width); break;
+				case 'toggle':			_dhtmlxToolbar.addButtonTwoState(_id + "^" + _tool.id, i, _tool.name, null, null); _dhtmlxToolbar.setItemState(_id + "^" + _tool.id, true, false); break;
 			}
 		}
 		
@@ -230,6 +240,21 @@ function Toolbar(__id, __target, __node)
 			
 			switch(_tool.type)
 			{
+				case 'toggle':
+					if(_tool.callback!=null)
+					{
+						// we need to add the automatic event stuff
+						var _callBacks		= _tool.callback.split(',');
+						
+						for(var c=0; c<_callBacks.length; c++)
+						{
+							var _callback		= _callBacks[c];
+							var _callParts		= _callback.split('.');
+							_handler.WantEvent(_callParts[0], _id, _tool.id, _callParts[1], 'always');
+						}
+					}
+					break;
+
 				case 'button':
 					if(_tool.callback!=null)
 					{

@@ -54,7 +54,13 @@ function Chart(__id, __target, __xml)
 	
 	this.DrillDownEvent		= _drillDownEvent;
 	this.DrillUpEvent		= _drillUpEvent;
-	 
+	
+	if(_target.cell!=null) {
+		_target = _target.cell.lastChild;
+		_target.id = "chart" + _id;
+	}
+	console.log("CHART: ID: " + _target.id);
+	
 	var _idParts = _id.split('.');
 	if(_idParts.length>1) _prefix = _prefix = _idParts[0];
 	 
@@ -71,7 +77,7 @@ function Chart(__id, __target, __xml)
 			_chart.setSize(parseInt(_mainObj.parentNode.offsetWidth,10) - 20, parseInt(_mainObj.parentNode.offsetHeight,10) - 20);
 		} else
 		{
-			var _dhxMain = _findHTMLObject(document.getElementById(_target.id).parentNode.parentNode, 'dhxMainCont');
+			var _dhxMain = _findHTMLObject(document.getElementById(_target.id).parentNode.parentNode, 'dhx_cell_cont_layout');
 			
 			if(_dhxMain!=null && document.getElementById(_target.id).style.position!='absolute')
 			{
@@ -84,7 +90,8 @@ function Chart(__id, __target, __xml)
 			{
 				if(document.getElementById(_target.id).style.position=='absolute') return;
 				
-				var _b = parseInt(document.getElementById(_target.id).style.border);
+				var _b = parseInt(document.getElementById(_target.id).style.border); 
+				if(isNaN(_b)) _b = 0;
 				_chart.setSize(parseInt(document.getElementById(_target.id).offsetWidth,10)-(_b*2), parseInt(document.getElementById(_target.id).offsetHeight,10) - (_b*2));
 			}
 		}
@@ -332,8 +339,11 @@ function Chart(__id, __target, __xml)
 		_categories 										= _configuration['xAxis'].categories;
 		_configuration['chart'].renderTo 	= _target.id;
 
-//		_chart = new Highcharts.Chart(_configuration, null);
-		_chart = new Highcharts.Chart(_configuration, LateLoading);
+		
+		console.log(_configuration);
+		
+		_chart = new Highcharts.Chart(_configuration, null);
+//		_chart = new Highcharts.Chart(_configuration, LateLoading);
 
 		// this is for debugging purposes
 		this.THECHART = _chart;

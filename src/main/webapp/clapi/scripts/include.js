@@ -65,7 +65,7 @@ if(_snooper.IsiPhoneOS)
 }
 
 // stylesheets
-document.write('<link type="text/css" rel="stylesheet" href="clapi/dhtmlx/dhtmlx.css" charset="utf-8">');
+document.write('<link type="text/css" rel="stylesheet" href="clapi/dhtmlx/dhtmlx_material.css" charset="utf-8">');
 //document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/dhtmlx.css" charset="utf-8">');
 //document.write('<link type="text/css" rel="stylesheet" href="clapi/ui/message_default.css" charset="utf-8">');
 document.write('<link type="text/css" rel="stylesheet" href="clapi/css/960.css" charset="utf-8">');
@@ -177,14 +177,14 @@ if(_without.indexOf('highcharts')==-1)
 // default MAP scripts
 if(_without.indexOf('maps')==-1)
 {
-	document.write('<script src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6" charset="utf-8"></script>');
-	document.write('<script src="http://maps.google.com/maps/api/js?sensor=false&v=3" charset="utf-8"></script>');
-	document.write('<script type="text/javascript" src="clapi/scripts/widgets/maps/mapstraction/mxn.js?(microsoft,googlev3)" charset="utf-8"></script>');
-	document.write('<script type="text/javascript" src="clapi/scripts/widgets/maps/mapstraction/mxn.geocoder.js" charset="utf-8"></script>');
-	document.write('<script type="text/javascript" src="clapi/scripts/widgets/maps/mapstraction/mxn.googlev3.geocoder.js" charset="utf-8"></script>');
+//	document.write('<script src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6" charset="utf-8"></script>');
+//	document.write('<script src="http://maps.google.com/maps/api/js?sensor=false&v=3" charset="utf-8"></script>');
+//	document.write('<script type="text/javascript" src="clapi/scripts/widgets/maps/mapstraction/mxn.js?(microsoft,googlev3)" charset="utf-8"></script>');
+//	document.write('<script type="text/javascript" src="clapi/scripts/widgets/maps/mapstraction/mxn.geocoder.js" charset="utf-8"></script>');
+//	document.write('<script type="text/javascript" src="clapi/scripts/widgets/maps/mapstraction/mxn.googlev3.geocoder.js" charset="utf-8"></script>');
 	
 	// GenGL Maps Component
-	document.write('<script language="javascript" src="clapi/scripts/widgets/maps/Geo.js" charset="utf-8"></script>');
+//	document.write('<script language="javascript" src="clapi/scripts/widgets/maps/Geo.js" charset="utf-8"></script>');
 }
 
 // GenGL Widgets

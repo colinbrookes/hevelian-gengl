@@ -39,14 +39,14 @@ public class Application {
 		String layoutFile = configuration.getProperty("folder_home") + "applications/" + applicationName + "/layouts/" +  name + ".xml";
 		LayoutDocument layoutDocument = null;
 		
-		if(layouts.containsKey(layoutFile)) {
-			return layouts.get(layoutFile);
-		}
+//		if(layouts.containsKey(layoutFile)) {
+//			return layouts.get(layoutFile);
+//		}
 		
 		try {
 			layoutDocument = new LayoutDocument(new FileReader(layoutFile));
 			if(layoutDocument!=null) {
-				layouts.put(layoutFile, layoutDocument);
+//				layouts.put(layoutFile, layoutDocument);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
