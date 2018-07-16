@@ -32,8 +32,10 @@ public class StaticContent {
 	 * @return
 	 */
 	public MediaType getMimeType() {
-		// TODO: testing shows it finds the .mime.types file in the user home directory but doesnt find the one in META-INF. More research required.
-		String mimeType = new MimetypesFileTypeMap().getContentType(file);
+		MimetypesFileTypeMap map = new MimetypesFileTypeMap();
+		map.addMimeTypes("image/svg+xml svg");
+		
+		String mimeType = map.getContentType(file);
 		if(logger.isDebugEnabled()) { logger.debug("StaticContent MIME: {}", mimeType); }
 		if(mimeType==null) {
 			mimeType = "application/octet-stream";

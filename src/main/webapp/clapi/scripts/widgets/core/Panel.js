@@ -185,6 +185,8 @@ function Panel(__id, __xml, __target)
 
 			_div.setAttribute('id', 'Panel_' + _id);
 			_target.appendChild(_div);
+			_target.style.overflow = 'auto';
+			
 			_target = _div;
 			_body = _target;
 			
