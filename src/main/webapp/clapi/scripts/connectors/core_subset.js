@@ -165,11 +165,6 @@ function SubsetConnector(_xml)
 					var _obj			= (_parts.length==2 || _parts.length==3)? _getObjectByName(_parts[0], _collection) : null;
 					var _val			= (_obj!=null)? _obj.GetProperty(_parts[1], _parts[2]) : _from;
 					
-					if(_obj==null)
-					{
-						_log('WARNING', _collection, 'Object not found in where clause: ' + _parts[0]);
-					}
-					
 					// special case to allow 'select all' from reference component (i.e. a pulldown)
 					if(_val=='...') {
 						_curWhere = 1;

@@ -47,7 +47,6 @@ function ExoniteConnector(__xml)
 		{
 			var _doc = new sisXMLDocument(_ajax.responseText);
 			var _msg = getXMLNode(_doc, _msgNode, 'update complete');
-//			alert(_msg);
 		}
 		
 		_handler.FireEvent(_collection.GetId(), 'onAfterUpdate');
@@ -75,12 +74,6 @@ function ExoniteConnector(__xml)
 		if(_parameters == null) { _failed=true; return _items; }
 		
 		var _newUrl = _evaluate(_collection, '../hevelian-exonite/api/collection.svc/' + _from + "?", true, _collection.GetId());
-		
-		if(_params!=null && _parameters==_params && _items.length>0 && _newUrl==_url)
-		{
-			console.log("NOT FETCHING ANYTHING!");
-//			return _items;
-		}
 		
 		_params 				= _parameters;
 		_items					= [];
